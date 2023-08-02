@@ -1,0 +1,12 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    cout<<"Bolivianos, el hado propicio"<< endl;
+    cout<<"coronó nuestros votos y anhelo"<< endl;
+    cout<<"es ya libre, ya libre este suelo"<< endl;
+    cout<<"ya cesó su servil condición."<< endl;
+    return 0;
+}
