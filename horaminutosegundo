@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+  int hora1, minuto, segundo;
+  string tiempo;
+  cout<<"Ingrese las horas: ";
+  cin>>hora1;
+  cout<<"Ingrese los minutos: ";
+  cin>>minuto;
+  cout<<"Ingrese los segundos: ";
+  cin>>segundo;
+  
+  if(hora1>12)
+  { hora1= hora1-12;
+    tiempo="PM";
+  }
+  
+  else 
+  { tiempo= "AM";
+  }
+  
+  
+ cout<<"La hora es "<<hora1<<" "<<minuto<<" "<<segundo<<tiempo;
+ 
+ 
+ 
+ 
+ 
+     return 0;
+}
