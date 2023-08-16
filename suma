@@ -1,0 +1,16 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    float numero1, numero2, suma;
+    cout<<"ingresar numero 1: ";
+    cin>>numero1;
+    cout<<"ingresar numero 2: ";
+    cin>>numero2;
+    suma=numero1+numero2;
+    cout<<"la suma es: "<<suma;
+
+    return 0;
+}
