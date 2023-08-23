@@ -1,0 +1,47 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+    float a, b, c, d, suma, multiplicacion, division, x, x1, x2, xR, xi;
+    
+    cout<<"Ingresar el valor de a: ";
+    cin>>a;
+    cout<<"Ingresar el valor de b: ";
+    cin>>b;
+    cout<<"Ingresar el valor de c: ";
+    cin>>c;
+    
+    d=(b*b)-(4*a*c);
+    
+    if (d==0)
+    { 
+    x=-b/(2*a);
+    cout<<"la solucion es: "<<x;
+
+    }
+   
+    if (d>0)
+     {
+    x1=((+b-sqrt((b*b)-4*a*c))/(2*a));
+    x2=((-b-sqrt((b*b)-4*a*c))/(2*a));
+    cout<<"los valores de x son: "<<endl;
+    cout<<"x1: "<<x1<<endl;
+    cout<<"x2: "<<x2<<endl;
+    
+     }
+    
+     if (d<0)
+    {
+        xR = -b/ (2*a);
+        xi = sqrt(-d)/(2*a); 
+        cout<<"solucion imaginaria 1= "<<xR<< "+"<< xi<<"i"<<endl;
+        cout<< "solucion imaginaria 2= "<<xR<< "-"<< xi<<"i"<<endl;
+        
+    }
+
+    
+    return 0;
+}
