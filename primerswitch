@@ -26,10 +26,11 @@ int main()
         case 3:r=a*b;break;
         case 4:r=a/b;break;
 
-    defaul: cout<<"opcion invalida"<<endl;
+    cout<<"el resultado es: "<<r<<endl;
+        
+        default: cout<<"opcion invalida"<<endl;
     
     }
     
-    cout<<"el resultado es: "<<r<<endl;
     return 0;
 }
