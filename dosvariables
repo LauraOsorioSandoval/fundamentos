@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int variable1, variable2, promedio;
+    cout<<"ingrese variable 1: ";
+    cin>>variable1;
+    cout<<"ingrese variable 2: ";
+    cin>>variable2;
+    promedio=variable1+variable2;
+    cout<<"ingrese variable 3: ";
+    cin>>variable1;
+    cout<<"ingrese variable 4: ";
+    cin>>variable2;
+    promedio=promedio+variable1+variable2;
+    cout<<"ingrese variable 5: ";
+    cin>>variable1;
+    promedio=promedio+variable1;
+    promedio=promedio/5;
+    cout<<"el promedio es: "<<promedio;
+    return 0;
+}
