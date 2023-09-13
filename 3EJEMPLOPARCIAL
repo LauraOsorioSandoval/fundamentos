@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    float prep, gin, trau, ped;
+    int op;
+    
+    cout<<"Ingrese el presupuesto anual general: ";
+    cin>>prep;
+    gin=prep*0.20;
+    trau=prep*0.40;
+    ped=prep*0.40;
+    
+    cout<<"AREAS"<<endl;
+    cout<<"1.Ginecologia "<<endl;
+    cout<<"2. Traumatlogia  "<<endl;
+    cout<<"3. Pediatria "<<endl;
+    cout<<"1.Todos "<<endl;
+    cout<<"¿Que area desea ver? (1-4) "<<endl;
+    cin>>op;
+    
+    switch (op)
+    { case 1: cout<<"El presupuesto para Ginecologia es"<<gin;
+      case 2:cout<<"El presupuesto para Traumatologia es "<<trau;
+      case 3: cout<<"El presupuesto para Pediatria es "<<ped;
+      case 4: cout<<"Ginecologia es "<<gin<<"Traumatologia es "<<trau<<"Pediatria es "<<ped;
+    }
+    
+    return 0;
+}
