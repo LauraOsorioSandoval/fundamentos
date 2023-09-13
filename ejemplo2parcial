@@ -1,0 +1,31 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+ int cantidad;
+ float total;
+ 
+ cout<<"Ingresar la cantidad de camisas: ";
+ cin>>cantidad;
+ 
+ if (cantidad<0)
+ {
+     cout<<"Ingresar numero mayor que 0";
+ }
+ else
+    {
+     if (cantidad>=3)
+     {
+        total=cantidad*5*0.70;
+        cout<<"El total de la compra es: "<<total;
+     }
+     else 
+     {
+        total=cantidad*5*0.95;
+        cout<<"El total de la compra es: "<<total;
+     }
+    }
+    return 0;
+}
