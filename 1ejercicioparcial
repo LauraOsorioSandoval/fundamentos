@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    float b,h,area,p;
+    cout<<"Ingrese el 1er dato de la base del terreno: ";
+    cin>>b;
+    cout<<"Ingrese el 2do dato de la base del terreno: ";
+    cin>>h;
+    area=b*h;
+    p=(b*2)+(h*2);
+    cout<<"El area del terreno es: "<<area<<endl;
+    cout<<"El perimetro del terreno es: "<<p<<endl;
+    return 0;
+    
+}
