@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	int N, M, contador;
+	float suma = 0, promedio;
+
+	do {
+		cout << "ingrese el valor de M: ";
+		cin >> M;
+	} while (M < 0);
+	do {
+		cout << "ingrese el valor de N: ";
+		cin >> N;
+	} while (N < M);
+
+	contador = M;
+	while (contador <= N) {
+		suma = suma + contador;
+		contador++;
+	}
+	promedio = suma / (N - M + 1);
+	cout << "la suma es: " << suma << endl;
+	cout << "el promedio es: " << promedio << endl;
+	return 0;
+}
+
