@@ -1,0 +1,20 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int num;
+    cout << "Dame el dígito de factorial que quieres ver:  ";
+    cin >> num;
+    int i, x = 1;
+
+    for (i = 1; i <= num; i++)
+    {
+        x = x * i;
+    }
+
+    cout << num << "!=" << x;
+    return 0;
+}
+
