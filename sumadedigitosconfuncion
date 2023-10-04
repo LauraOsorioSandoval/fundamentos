@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+
+int Digito(int n);
+
+int main() {
+    int numero,suma=0;
+    cout << "Ingrese un numero entero: ";
+    cin >> numero;
+    while (numero > 0)
+    {
+        suma = suma + Digito(numero);
+        numero = numero/ 10;
+    }
+       
+    cout << "La suma de los digitos es: "<< suma << endl;
+
+    return 0;
+}
+
+int Digito(int n)
+{
+    int d, suma=0;
+    d = n % 10;
+    return d;
+
+}
