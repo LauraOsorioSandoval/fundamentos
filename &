@@ -1,0 +1,69 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+float unica(float a, float b);
+void reales(float a, float b, float c, float& x1, float& x2);
+void imaginario(float a, float b, float c, float& xr, float& xi);
+
+int main()
+{
+
+    float a, b, xr, xi, x1, x2, c, d;
+    cout << "Ingrese a: ";
+    cin >> a;
+
+    cout << "Ingrese b: ";
+    cin >> b;
+    cout << "Ingrese c: ";
+    cin >> c;
+
+    d = b * b - 4 * a * c;
+
+    if (d == 0)
+
+    {
+
+        cout << "La solucion unica es " << unica(a, b);
+    }
+
+    else if (d < 0)
+    {
+        imaginario(a, b, c, x1, x2);
+        cout << "x1= " << x1 << "+" << x2 << "i" << endl;
+        cout << "x2= " << x1 << "-" << x2 << "i";
+
+    }
+
+    else {
+        reales(a, b, c, x1, x2);
+        cout << "x1= " << x1 << endl;
+        cout << "x2= " << x2;
+
+    }
+    return 0;
+}
+
+float unica(float a, float b)
+{
+    float aux;
+    aux = (-b / 2 * a);
+    return aux;
+}
+void reales(float a, float b, float c, float& x1, float& x2)
+{
+
+    float d = b * b - 4 * a * c;
+    x1 = (-b + (sqrt(d))) / (2 * a);
+    x2 = (-b - (sqrt(d))) / (2 * a);
+
+}
+void imaginario(float a, float b, float c, float& xr, float& xi)
+{
+    float d = b * b - 4 * a * c;
+    xr = -b / 2 * a;
+    xi = sqrt(-d) / (2 * a);
+
+
+
+}
