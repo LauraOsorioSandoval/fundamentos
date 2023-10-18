@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+int main()
+
+{
+	char resp;
+	float precio, descuento, precioFinal, suma = 0;
+	string nombredelcliente;
+	do {
+		cout << "ingresar el nombre del cliente; ";
+		cin >> nombredelcliente;
+		cout << "introduzca el precio: ";
+		cin >> precio;
+		cout << "introduzca el porcentaje de descuento: ";
+		cin >> descuento;
+		precioFinal = precio - (precio * (descuento / 100));
+		cout << "el precio final con descuento es de : " << precioFinal << endl;
+		suma += precioFinal;
+		cout << " ¿Desea continuar? Presione s o S";
+		cin >> resp;
+	} while (resp == 's' or resp == 'S');
+
+	cout << "El monto total es " << suma;
+	return 0;
+}
