@@ -1,0 +1,50 @@
+#include <iostream>
+#define MAX 1000
+using namespace std;
+void cargar (float a[], int n);
+float mayor (float a[], int n);
+int
+main ()
+{
+  int n;
+  float vec[MAX];
+  
+
+  do
+    {
+      cout<<"Ingresar el numero de elementos: ";
+      cin >> n;
+    }
+  while ((n < 0) || (n > MAX));
+  cargar (vec, n);
+  
+  cout<<"El mayor elemento es "<<mayor(vec,n);
+
+  return 0;
+}
+void cargar (float a[], int n)
+{
+    for (int i=0; i<n; i++)
+    {
+        cout<<"Ingresa el elemento"<<i<<": ";
+        cin>>a[i];
+    }
+}
+
+float mayor (float a[], int n)
+{
+    float nmayor;
+    for (int i=0; i<n; i++)
+    {
+       if (i==0) 
+            nmayor=a[0];
+        else
+        {
+            if (a[i]>nmayor)
+            {
+                nmayor=a[i];
+            }
+        }
+    }
+    return nmayor;
+}
