@@ -1,0 +1,97 @@
+#include <iostream>
+
+using namespace std;
+
+const int MAX_PRODUCTOS = 100;  // Máximo número de productos
+
+// Prototipos de funciones
+int agregarVenta(char productos[][100], double ventas[], int& numVentas);
+double calcularVentasTotales(const double ventas[], int numVentas);
+void mostrarVentas(const char productos[][100], const double ventas[], int numVentas);
+
+int main() {
+    char productos[MAX_PRODUCTOS][100];
+    double ventas[MAX_PRODUCTOS];
+    int numVentas = 0;
+    char opcion;
+
+    do {
+        cout << "Menu:" << endl;
+        cout << "1. Agregar venta" << endl;
+        cout << "2. Calcular ventas totales" << endl;
+        cout << "3. Mostrar ventas" << endl;
+        cout << "4. Salir" << endl;
+        cout << "Elija una opción: ";
+        cin >> opcion;
+
+        switch (opcion) {
+        case '1':
+            numVentas = agregarVenta(productos, ventas, numVentas);
+            break;
+        case '2':
+            cout << "Ventas totales: $" << calcularVentasTotales(ventas, numVentas) << endl;
+            break;
+        case '3':
+            mostrarVentas(productos, ventas, numVentas);
+            break;
+        case '4':
+            cout << "Saliendo del programa." << endl;
+            break;
+        default:
+            cout << "Opción no válida. Intente de nuevo." << endl;
+        }
+    } while (opcion != '4');
+
+    return 0;
+}
+
+// Función para agregar una venta
+int agregarVenta(char productos[][100], double ventas[], int& numVentas) {
+    char producto[100];
+    double venta;
+
+    cout << "Ingrese el nombre del producto: ";
+    cin.ignore(); // Limpiar el búfer del teclado
+    cin.getline(producto, 100);
+
+    cout << "Ingrese la venta realizada: $";
+    cin >> venta;
+
+    // Validar datos
+    if (venta < 0) {
+        cout << "La venta no puede ser negativa." << endl;
+    }
+    else if (numVentas < MAX_PRODUCTOS) {
+        int i = 0;
+        while (producto[i] != '\0' && i < 100) {
+            productos[numVentas][i] = producto[i];
+            i++;
+        }
+        productos[numVentas][i] = '\0';  // Agregar el carácter nulo al final
+        ventas[numVentas] = venta;
+        numVentas++;
+        cout << "Venta agregada con éxito." << endl;
+    }
+    else {
+        cout << "No se pueden agregar más ventas. Capacidad máxima alcanzada." << endl;
+    }
+
+    return numVentas;
+}
+
+// Función para calcular las ventas totales
+double calcularVentasTotales(const double ventas[], int numVentas) {
+    double total = 0.0;
+    for (int i = 0; i < numVentas; i++) {
+        total += ventas[i];
+    }
+    return total;
+}
+
+// Función para mostrar las ventas
+void mostrarVentas(const char productos[][100], const double ventas[], int numVentas) {
+    cout << "Ventas registradas:" << endl;
+    for (int i = 0; i < numVentas; i++) {
+        cout << "Producto: " << productos[i] << ", Venta: $" << ventas[i] << endl;
+    }
+}
