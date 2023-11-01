@@ -1,0 +1,108 @@
+#include <iostream>
+using namespace std;
+#define MAX 100
+void anadir(float &precio, string &nombre, int &cantidad);
+void mostrarlista(float precio[], string nombre[], int cantidad[], int contador);
+void cambiarstock(int i, string nombre[], int cantidad[]);
+void mostrarnombre(int i, string nombre[], int cantidad[], float precio[]);
+float inventario(int contador, float precio[], int cantidad[]);
+int main() {
+    int  opcion, eleccion; int cantidad[MAX]; string nombre[MAX]; float precio[MAX]; int contador; string elegir; bool dedoli;
+    contador = 0;
+    do {
+        system("cls");
+        cout << "Ingresa que deseas hacer : " << endl;
+        cout << "1. Anadir un nuevo producto" << endl;
+        cout << "2. Modificar los stocks del producto" << endl;
+        cout << "3. Buscar un producto por su nombre" << endl;
+        cout << "4. Mostrar toda la lista de productos" << endl;
+        cout << "5. Obtener el valor total del inventario" << endl;
+        cout << "0. Salir" << endl;
+        cin >> eleccion;
+        system("cls");
+        switch (eleccion) {
+        case 1: {  
+            anadir(precio[contador], nombre[contador], cantidad[contador]);
+            contador += 1;
+        }
+              break;
+        case 2: {
+            cout << "Ingresa el nombre del producto que quieres modificar el stock de la siguiente lista y luego anade textualmente el nombre del ";
+            mostrarlista(precio, nombre, cantidad, contador);
+            cin >> elegir;
+            for (int i = 0; i!=contador; i++) {
+                if (elegir == nombre[i]) { cambiarstock(i, nombre, cantidad); }
+            }
+
+        }
+              break;
+        case 3: {
+            cout << "Ingrese el nombre del producto que desea buscar "; cin >> elegir;
+            dedoli = 0;
+            for (int i = 0; i != contador; i++) {
+                if (elegir == nombre[i]) { mostrarnombre(i, nombre, cantidad, precio); dedoli = 1; }
+            }
+                if (dedoli == 0) { cout << "No contamos con el producto que usted busca"; }
+
+            }
+              break;
+        case 4: {cout << "Lista de Productos:" << endl;
+            mostrarlista(precio, nombre, cantidad, contador);
+          
+        }
+              break;
+        case 5: {
+            if (contador == 0) { cout << "No tiene ningun producto, su inventario vale 0"; }
+            else {
+                cout << "El valor del inventario total es de " << inventario(contador, precio, cantidad) << endl;
+            }}
+              break;
+
+              break;
+        case 0: { return 0; }
+              break;
+
+        default: {system("cls"); cout << "No ingreso una opcion valida"<<endl; }
+        }
+
+        cout << "Quiere volver al menu o salir?" << endl;
+        cout << "1. Volver" << endl;
+        cout << "0. Salir" << endl;
+        cin >> opcion;
+    } while (opcion == 1);
+    return 0;
+}
+
+void anadir(float &precio, string &nombre, int &cantidad) {
+    cout << "Porfavor, ingresa el nombre de tu producto: " << endl;
+    cin >> nombre;
+    cout << "Porfavor, ingresa el precio de tu producto: " << endl;
+    cin >> precio;
+    cout << "Porfavor, ingresa la cantidad de tu producto" << endl;
+    cin >> cantidad;
+}
+void mostrarlista(float precio[], string nombre[], int cantidad[], int contador){
+    if (contador == 0) { cout << "No hay productos"<<endl; }
+    else {
+        for (int c = 0; c < contador; c++) {
+            cout << "Producto " << c + 1 << "  = " << nombre[c] << endl << "     Precio = " << precio[c] << endl << "        Cantidad=" << cantidad[c]<<endl;
+        }
+    }
+}
+void cambiarstock(int i, string nombre[], int cantidad[]) {
+    cout << "El producto " << nombre[i] << " tiene un stock actual de" << cantidad[i]<<endl;
+    cout << "Porfavor, ingrese la nueva cantidad: "; cin >> cantidad[i];
+
+}
+void mostrarnombre(int i, string nombre[], int cantidad[], float precio[]) {
+
+    cout << "El Producto " << nombre[i] << endl << "     Precio = " << precio[i] << endl << "        Cantidad=" << cantidad[i] << endl;
+
+}
+float inventario(int contador, float precio[], int cantidad[]) {
+    float julioprofe = 0;
+    for (int i = 0; i < contador; i++) {
+        julioprofe = julioprofe + precio[i] * cantidad[i];
+    }
+    return julioprofe;
+}
