@@ -1,0 +1,170 @@
+#include <iostream>
+#include <string>
+#include "stdlib.h"
+#define MAX 100
+using namespace std;
+struct tintereses
+{
+	int numero;
+	string interes;
+	string descripcion;
+	int estado;
+};
+tintereses v[MAX];
+
+
+int insertar();
+void listar(int n);
+void consultar(int n);
+void borrar(int n);
+void clasificar();
+void modificar(int n);
+int main()
+{
+	int n, op;
+	do {
+		cout << "MENU" << endl;
+		cout << "1. Insertar" << endl;
+		cout << "2. Listar" << endl;
+		cout << "3. Consultar" << endl;
+		cout << "4. Modificar" << endl;
+		cout << "5. Borrar" << endl;
+		cout << "6. Clasificar" << endl;
+		cout << "0. Salir" << endl;
+		cout << "Presione la opcion: ";
+		cin >> op;
+		switch (op)
+		{
+		case 1: n= insertar();
+			break;
+		case 2: listar(n); 
+			break;
+		case 3: consultar(n);
+			break;
+		case 4: modificar(n);
+			break;
+		case 5: borrar(n);
+			break;
+		case 6: clasificar();
+			break;
+		case 0: cout << "Salir" << endl; break;
+		default: cout << "Opcion invalida" << endl;
+		}
+	} while (op != 0);
+	system("pause");
+	system("cls");
+	system("dir");
+}
+
+int insertar()
+{
+	int aux;
+	cout << "Ingrese el numero de elementos: ";
+	cin >> aux;
+	for (int i = 0; i < aux; i++)
+	{
+		cout << "Ingrese el ID: ";
+		cin >> v[i].numero;
+		cout << "Ingrese interes: ";
+		cin.ignore();
+		getline(cin, v[i].interes);
+		cout << "Ingrese la descripcion: ";
+		getline(cin, v[i].descripcion);
+		v[i].estado = 0;
+	}
+
+
+	return aux;
+
+}
+void listar(int n)
+{
+	cout << "LISTADO" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		if (v[i].estado == 0)
+		{
+			cout << v[i].numero << "\t";
+			cout << v[i].interes << "\t";
+			cout << v[i].descripcion << "\t" << endl;
+		}
+	}
+}
+void consultar(int n)
+{
+	int idelemento;
+	bool band = false;
+	cout << "Ingrese el elemento a buscar: ";
+	cin >> idelemento;
+	for (int i = 0; i < n; i++)
+	{
+		if (v[i].numero == idelemento)
+		{
+			cout << v[i].interes << "\t";
+			cout << v[i].descripcion << "\t";
+			band = true;
+		}
+	}
+	if (band == true)
+		cout << "Elemento encontrado";
+	else
+		cout << "Elemento no encntrado";
+
+}
+void modificar(int n)
+{
+	int idelemento;
+	bool band = false;
+	char resp;
+	cout << "Ingrese el elemento a modificar: ";
+	cin >> idelemento;
+	for (int i = 0; i < n; i++)
+	{
+		if (v[i].numero == idelemento)
+		{
+			cout << v[i].interes << "\t";
+			cout << "Desea modificar el dato?";
+			cin >> resp;
+			if (resp == 's')
+			{
+				getline(cin, v[i].interes);
+			}
+			cout << v[i].descripcion << "\t";
+			cout << "Desea modificar el dato?";
+			cin >> resp;
+			if (resp == 's')
+			{
+				getline(cin, v[i].descripcion);
+			}
+			band = true;
+		}
+		if (band == true)
+			cout << "Elemento encontrado y modificado";
+		else
+			cout << "Elemento no encntrado";
+	}
+}
+void borrar(int n)
+{
+	int idelemento;
+	bool band = false;
+	char resp;
+	cout << "Ingrese el elemento a modificar: ";
+	cin >> idelemento;
+	for (int i = 0; i < n; i++)
+	{
+		if (v[i].numero == idelemento)
+		{
+			v[i].estado = 9;
+			band = true;
+		}
+	}
+	if (band == true)
+		cout << "Elemento encontrado y borrado";
+	else
+		cout << "Elemento no encntrado";
+}
+void clasificar()
+{
+
+}
