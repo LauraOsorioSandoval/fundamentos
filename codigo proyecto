@@ -1,0 +1,340 @@
+#include <iostream>
+#include "math.h"
+#include <conio.h>
+
+using namespace std;
+
+void SISTEMA(float A, float B, float C, float D, float E, float F, float& x, float& y);
+float unica(float A, float B);
+void reales(float A, float B, float C, float& x1, float& x2);
+void imaginario(float A, float B, float C, float& xr, float& xi);
+double calcularAreaTriangulo(double base, double altura);
+double calcularAreaCuadrado(double lado);
+float division(float a, float b);
+float suma(float a, float b);
+float resta(float a, float b);
+float mult(float a, float b);
+double calcularLogaritmoEnBase(double numero, double base);
+double calcularradicacion(int numero, int indice, double resultado);
+void matematicas();
+
+int main()
+{
+	matematicas();
+	return 0;
+}
+
+
+
+void matematicas()
+{
+	system("color 3F");
+	const float pi = 3.1415;
+
+	float A, B, C, D, E, F, x, y, xr, xi, x1, x2, r;
+	double resultado = 0;
+	double base, altura, lado;
+	int opcion, op2, indice, numero, op3;
+	while (true)
+	{
+		cout << "MENU DE FORMULAS" << endl;
+		cout << "1. Sistemas de Ecuaciones" << endl;
+		cout << "2. Ecuaciones de Segundo Grado" << endl;
+		cout << "3. Operaciones aritmeticas" << endl;
+		cout << "4. Areas de figuras planas" << endl;
+		cout << "5. Logaritmos" << endl;
+		cout << "6. Exponentes" << endl;
+		cout << "7. Radicacion" << endl;
+		cout << "0. Salir" << endl;
+
+		cout << "Elije una opcion:";
+		cin >> opcion;
+
+		switch (opcion)
+		{
+		case 1:
+		{
+			cout << "Respecto a la primera ecuacion Ax + By + C = 0" << endl;
+			cout << "Inserte A: ";
+			cin >> A;
+			cout << "Inserte B: ";
+			cin >> B;
+			cout << "Inserte C: ";
+			cin >> C;
+			cout << "Respecto a la segunda ecuacion Dx + Ey + F = 0" <<
+				endl;;
+			cout << "Inserte D: ";
+			cin >> D;
+			cout << "Inserte E: ";
+			cin >> E;
+			cout << "Inserte F: ";
+			cin >> F;
+			if ((A * E - B * D) == 0)
+			{
+				if ((B * F - C * E) == 0)
+				{
+					cout << "Tiene soluciones infinitas";
+				}
+				else
+					cout << "No tiene solucion";
+			}
+
+			else
+			{
+				SISTEMA(A, B, C, D, E, F, x, y);
+			}
+
+			cout << "y=" << y << endl;
+			cout << "x=" << x << endl;
+			cout << "--------OPERACION REALIZADA CON EXITO-------" << endl;
+		}
+		break;
+
+
+		case 2:
+		{
+			cout << "Ingrese a: ";
+			cin >> A;
+			cout << "Ingrese b: ";
+			cin >> B;
+			cout << "Ingrese c: ";
+			cin >> C;
+			D = B * B - 4 * A * C;
+
+			if (D == 0)
+
+			{
+
+				cout << "La solucion unica es " << unica(A, B);
+			}
+
+			else if (D < 0)
+			{
+				imaginario(A, B, C, x1, x2);
+				cout << "x1= " << x1 << "+" << x2 << "i" << endl;
+				cout << "x2= " << x1 << "-" << x2 << "i";
+
+			}
+
+			else
+			{
+				reales(A, B, C, x1, x2);
+				cout << "x1= " << x1 << endl;
+				cout << "x2= " << x2 << endl;
+
+			}
+			cout << "OPERACION REALIZADA CON EXITO-------" << endl;
+		}
+
+		case 3:
+		{
+			cout << "OPERACIONES ARITMETICAS" << endl;
+			int opcion;
+			cout << "Ingrese el primer numero: ";
+			cin >> A;
+			cout << "Ingrese el segundo numero: ";
+			cin >> B;
+			cout << "OPCIONES" << endl;
+			cout << "1.Suma" << endl;
+			cout << "2.Resta" << endl;
+			cout << "3.Multipliacion" << endl;
+			cout << "4.Division" << endl;
+			cout << "0. Salir" << endl;
+			cout << "Elige una opcion(1-4): ";
+			cin >> op2;
+
+			switch (op2)
+			{
+			case 1:
+				r = suma(A, B);
+				break;
+			case 2:
+				r = resta(A, B);
+				break;
+			case 3:
+				r = mult(A, B);
+				break;
+			case 4:
+				r = division(A, B);
+				break;
+			}
+			cout << "El resultado es " << r << endl;
+			cout << "---------OPERACION REALIZADA CON EXITO-------" << endl;
+
+		}break;
+		case 4:
+		{
+			cout << "  AREAS DE FIGURAS PLANAS  " << endl;
+			cout << "1. Formula para el area de un rectangulo" << endl;
+			cout << "2. Formula para el area de un cuadrado" << endl;
+			cout << "3. Formula para el area de una circunferencia" << endl;
+			cout << "0. salir" << endl;
+			cout << "Elige una opcion: " << endl;
+			cin >> op3;
+
+			switch (op3)
+			{
+			case 1:
+			{
+				double base, altura;
+				cout << "Ingrese la longitud de la base del triángulo: ";
+				cin >> base;
+
+				cout << "Ingrese la altura del triángulo: ";
+				cin >> altura;
+
+				double area = calcularAreaTriangulo(base, altura);
+
+				cout << "El area del triángulo es: " << area << endl;
+			}break;
+			case 2:
+			{
+				double lado;
+				cout << "Ingrese la longitud del lado del cuadrado: ";
+				cin >> lado;
+
+				double area = calcularAreaCuadrado(lado);
+
+				cout << "El area del cuadrado es: " << area << endl;
+			}break;
+			case 3:
+			{
+				double radio, area;
+				const double pi = 3.1416;
+
+				cout << "Ingrese el radio del circulo: ";
+				cin >> radio;
+
+				area = pi * radio * radio;
+
+				cout << "El area del circulo es: " << area << endl;
+			}break;
+			}break;
+		}break;
+
+		case 5:
+		{
+			cout << "Calculadora de logaritmos en cualquier base" << endl;
+			cout << "Ingresa el numero (A): ";
+			cin >> A;
+
+			cout << "Ingresa la base (B): ";
+			cin >> B;
+
+			C = calcularLogaritmoEnBase(A, B);
+
+			cout << "El logaritmo en base " << B << " de " << A << " es: " <<
+				C << endl;
+		}break;
+
+		case 6:
+		{
+			cout << "EXPONENTES" << endl;
+			cout << "1. Elevar un numero a una potencia " << endl;
+			cout << "2. Salir" << endl;
+
+			cout << "Elije una opcion: ";
+			cin >> op2;
+
+			switch (op2)
+			{
+			case 1:
+			{
+				double A, B, C;
+				cout << "Ingresa la base (A): ";
+				cin >> A;
+				cout << "Ingresa el exponente (B): ";
+				cin >> B;
+				C = pow(A, B);
+				cout << A << " elevado a la " << B << " es: " << C << endl;
+			} break;
+			}
+		}break;
+		case 7:
+		{
+			cout << "Ingrese un numero para calcular la raiz: ";
+			cin >> numero;
+
+			cout << "Ingrese el indice de la raiz (por ejemplo, 2 para la raiz cuadrada): ";
+			cin >> indice;
+			cout << "El resultado es: " << calcularradicacion(numero, indice, resultado) << endl;
+		}break;
+		case 0:
+			cout << "Saliendo del programa." << endl;
+			return; 
+
+		default:
+			cout <<
+				"Opcion no valida. Por favor, elige una opcion valida." <<
+				endl;
+		}
+	}
+
+	return;
+}
+
+void SISTEMA(float A, float B, float C, float D, float E, float F, float& x, float& y)
+{
+	y = (A * F - C * D) / (A * E - B * D);
+	x = (C - B * y) / A;
+}
+float unica(float A, float B)
+{
+	float aux;
+	aux = (-B / 2 * A);
+	return aux;
+}
+void reales(float A, float B, float C, float& x1, float& x2)
+{
+	float D = B * B - 4 * A * C;
+	x1 = (-B + (sqrt(D))) / (2 * A);
+	x2 = (-B - (sqrt(D))) / (2 * A);
+}
+void imaginario(float A, float B, float C, float& xr, float& xi)
+{
+	float D = B * B - 4 * A * C;
+	xr = -B / 2 * A;
+	xi = sqrt(-D) / (2 * A);
+}
+float division(float a, float b)
+{
+	return a / b;
+}
+float suma(float a, float b)
+{
+	return a + b;
+}
+float resta(float a, float b)
+{
+	return a - b;
+}
+float mult(float a, float b)
+{
+	return a * b;
+}
+double calcularAreaTriangulo(double base, double altura)
+{
+	return 0.5 * base * altura;
+}
+double calcularAreaCuadrado(double lado)
+{
+	return lado * lado;
+}
+double calcularLogaritmoEnBase(double numero, double base)
+{
+	return log(numero) / log(base);
+}
+double calcularradicacion(int numero, int indice, double resultado)
+{
+	if (numero < 0 && indice % 2 == 0)
+	{
+		cout << "No se puede calcular la raíz par de un número negativo." << endl;
+	}
+	else
+	{
+		resultado = pow(numero, 1.0 / indice);
+
+		cout << "La raíz " << indice << " de " << numero << " es: " << resultado << endl;
+	}
+	return resultado;
+}
